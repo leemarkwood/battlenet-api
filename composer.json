@@ -1,0 +1,21 @@
+{
+    "name": "mrcorex/battlenet-api",
+    "description": "php api for Battle.net game APIs ( https://dev.battle.net/ ).",
+    "keywords":  ["battle", "battlenet", "battle.net", "blizzard", "warcraft", "starcraft", "diablo", "wow"],
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "CoRex",
+            "email": "dev@corex.dk",
+            "role": "Project Founder"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "BattleNet\\": "src/"
+        }
+    }
+}
