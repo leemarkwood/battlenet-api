@@ -189,8 +189,9 @@ class Client
     /**
      * Get cache-filename.
      *
-     * @param bool|true $includePath
+     * @param string $path
      * @param array $params
+     * @param bool|true $includePath
      * @return string
      */
     private function getCacheFilename($path, $params, $includePath = true)
