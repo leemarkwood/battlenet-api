@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Leaderboard
@@ -24,7 +25,7 @@ class Leaderboard
      */
     public function getLeaderboardRealm($realm)
     {
-        return $this->client->fetchData('challenge/' . $realm, [], 'challenge', $this->client->getSeconds('5m'));
+        return $this->client->fetchData('challenge/' . $realm, [], 'challenge', $this->client->getSeconds(Cache::getLifetimeShort()));
     }
 
     /**
@@ -34,7 +35,7 @@ class Leaderboard
      */
     public function getLeaderboardRegion()
     {
-        return $this->client->fetchData('challenge/region', [], 'challenge', $this->client->getSeconds('5m'));
+        return $this->client->fetchData('challenge/region', [], 'challenge', $this->client->getSeconds(Cache::getLifetimeShort()));
     }
 
     /**
@@ -44,7 +45,7 @@ class Leaderboard
      */
     public function getLeaderboard2V2()
     {
-        return $this->client->fetchData('leaderboard/2v2', [], 'rows', $this->client->getSeconds('5m'));
+        return $this->client->fetchData('leaderboard/2v2', [], 'rows', $this->client->getSeconds(Cache::getLifetimeShort()));
     }
 
     /**
@@ -54,7 +55,7 @@ class Leaderboard
      */
     public function getLeaderboard3V3()
     {
-        return $this->client->fetchData('leaderboard/3v3', [], 'rows', $this->client->getSeconds('5m'));
+        return $this->client->fetchData('leaderboard/3v3', [], 'rows', $this->client->getSeconds(Cache::getLifetimeShort()));
     }
 
     /**
@@ -64,7 +65,7 @@ class Leaderboard
      */
     public function getLeaderboard5V5()
     {
-        return $this->client->fetchData('leaderboard/5v5', [], 'rows', $this->client->getSeconds('5m'));
+        return $this->client->fetchData('leaderboard/5v5', [], 'rows', $this->client->getSeconds(Cache::getLifetimeShort()));
     }
 
     /**
@@ -74,6 +75,6 @@ class Leaderboard
      */
     public function getLeaderboardRated()
     {
-        return $this->client->fetchData('leaderboard/rbg', [], 'rows', $this->client->getSeconds('5m'));
+        return $this->client->fetchData('leaderboard/rbg', [], 'rows', $this->client->getSeconds(Cache::getLifetimeShort()));
     }
 }

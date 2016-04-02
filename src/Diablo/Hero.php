@@ -2,6 +2,7 @@
 
 namespace BattleNet\Diablo;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Hero
@@ -20,8 +21,8 @@ class Hero
         $client = new Client('d3');
 
         // Get data.
-        $this->data = $client->fetchData('profile/' . $battleTag . '/hero/' . intval($heroId), [], '', $client->getSeconds('24h'),
-            $forceFetch);
+        $path = 'profile/' . $battleTag . '/hero/' . intval($heroId);
+        $this->data = $client->fetchData($path, [], '', $client->getSeconds(Cache::getLifetimeShort()), $forceFetch);
     }
 
     /**

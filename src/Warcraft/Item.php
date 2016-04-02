@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Item
@@ -24,7 +25,7 @@ class Item
      */
     public function getItem($itemId)
     {
-        return $this->client->fetchData('item/' . intval($itemId), [], '', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('item/' . intval($itemId), [], '', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -35,6 +36,6 @@ class Item
      */
     public function getItemSet($setId)
     {
-        return $this->client->fetchData('item/set/' . intval($setId), [], '', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('item/set/' . intval($setId), [], '', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 }

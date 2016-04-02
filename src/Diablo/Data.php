@@ -2,6 +2,7 @@
 
 namespace BattleNet\Diablo;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Data
@@ -24,7 +25,7 @@ class Data
      */
     public function getItem($itemId)
     {
-        return $this->client->fetchData('data/item/' . $itemId, [], '', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('data/item/' . $itemId, [], '', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -35,7 +36,7 @@ class Data
      */
     public function getFollower($follower)
     {
-        return $this->client->fetchData('data/follower/' . $follower, [], '', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('data/follower/' . $follower, [], '', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -76,7 +77,7 @@ class Data
      */
     public function getArtisan($artisan)
     {
-        return $this->client->fetchData('data/artisan/' . $artisan, [], '', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('data/artisan/' . $artisan, [], '', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**

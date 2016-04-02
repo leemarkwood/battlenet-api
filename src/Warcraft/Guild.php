@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Guild
@@ -24,7 +25,8 @@ class Guild
         $params = [
             'fields' => $this->fields
         ];
-        $this->data = $client->fetchData('guild/' . $realm . '/' . $guild, $params, '', $client->getSeconds('30m'), $forceFetch);
+        $path = 'guild/' . $realm . '/' . $guild;
+        $this->data = $client->fetchData($path, $params, '', $client->getSeconds(Cache::getLifetimeShort()), $forceFetch);
     }
 
     /**

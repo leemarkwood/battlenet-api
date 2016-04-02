@@ -2,6 +2,7 @@
 
 namespace BattleNet\StarCraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Profile
@@ -27,7 +28,7 @@ class Profile
         $this->client = new Client('sc2');
 
         // Get data.
-        $this->seconds = '24h';
+        $this->seconds = Cache::getLifetimeShort();
         $this->profileId = $profileId;
         $this->region = $region;
         $this->name = $name;

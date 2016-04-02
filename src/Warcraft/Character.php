@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Character
@@ -24,7 +25,8 @@ class Character
         $params = [
             'fields' => $this->fields
         ];
-        $this->data = $client->fetchData('character/' . $realm . '/' . $character, $params, '', $client->getSeconds('24h'), $forceFetch);
+        $path = 'character/' . $realm . '/' . $character;
+        $this->data = $client->fetchData($path, $params, '', $client->getSeconds(Cache::getLifetimeShort()), $forceFetch);
     }
 
     /**

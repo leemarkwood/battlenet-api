@@ -2,6 +2,7 @@
 
 namespace BattleNet\Diablo;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Career
@@ -19,7 +20,7 @@ class Career
         $client = new Client('d3');
 
         // Get data.
-        $this->data = $client->fetchData('profile/' . $battleTag . '/', [], '', $client->getSeconds('24h'), $forceFetch);
+        $this->data = $client->fetchData('profile/' . $battleTag . '/', [], '', $client->getSeconds(Cache::getLifetimeShort()), $forceFetch);
     }
 
     /**

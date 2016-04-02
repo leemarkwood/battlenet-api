@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Quest
@@ -24,6 +25,6 @@ class Quest
      */
     public function getQuest($questId)
     {
-        return $this->client->fetchData('quest/' . intval($questId), [], '', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('quest/' . intval($questId), [], '', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 }

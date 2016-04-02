@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Boss
@@ -23,7 +24,7 @@ class Boss
      */
     public function getBosses()
     {
-        return $this->client->fetchData('boss/', [], 'bosses', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('boss/', [], 'bosses', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -34,6 +35,6 @@ class Boss
      */
     public function getBoss($bossId)
     {
-        return $this->client->fetchData('boss/' . intval($bossId), [], '', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('boss/' . intval($bossId), [], '', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 }

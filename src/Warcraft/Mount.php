@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Mount
@@ -23,7 +24,7 @@ class Mount
      */
     public function getMounts()
     {
-        return $this->client->fetchData('mount/', [], 'mounts', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('mount/', [], 'mounts', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**

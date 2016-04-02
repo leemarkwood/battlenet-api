@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Realm
@@ -23,6 +24,6 @@ class Realm
      */
     public function getRealms()
     {
-        return $this->client->fetchData('realm/status', [], 'realms', $this->client->getSeconds('5m'));
+        return $this->client->fetchData('realm/status', [], 'realms', $this->client->getSeconds(Cache::getLifetimeShort()));
     }
 }

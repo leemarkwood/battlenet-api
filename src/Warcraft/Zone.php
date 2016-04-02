@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Zone
@@ -23,7 +24,7 @@ class Zone
      */
     public function getZones()
     {
-        return $this->client->fetchData('zone/', [], 'zones', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('zone/', [], 'zones', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -34,6 +35,6 @@ class Zone
      */
     public function getZone($zoneId)
     {
-        return $this->client->fetchData('zone/' . intval($zoneId), [], '', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('zone/' . intval($zoneId), [], '', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace BattleNet\StarCraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Ladder
@@ -24,6 +25,6 @@ class Ladder
      */
     public function getLadder($ladderId)
     {
-        return $this->client->fetchData('ladder/' . intval($ladderId), [], '', $this->client->getSeconds('5m'));
+        return $this->client->fetchData('ladder/' . intval($ladderId), [], '', $this->client->getSeconds(Cache::getLifetimeShort()));
     }
 }

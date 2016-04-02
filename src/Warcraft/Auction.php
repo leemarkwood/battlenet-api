@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Auction
@@ -24,7 +25,7 @@ class Auction
      */
     public function getAuctions($realm)
     {
-        $data = $this->client->fetchData('auction/data/' . $realm, [], 'files', $this->client->getSeconds('5m'));
+        $data = $this->client->fetchData('auction/data/' . $realm, [], 'files', $this->client->getSeconds(Cache::getLifetimeShort()));
         if (isset($data[0])) {
             return $data[0];
         }

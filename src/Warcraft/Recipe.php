@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Recipe
@@ -24,6 +25,6 @@ class Recipe
      */
     public function getRecipe($recipeId)
     {
-        return $this->client->fetchData('recipe/' . intval($recipeId), [], '', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('recipe/' . intval($recipeId), [], '', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 }

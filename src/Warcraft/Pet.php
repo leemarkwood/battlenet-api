@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Pet
@@ -23,7 +24,7 @@ class Pet
      */
     public function getPets()
     {
-        return $this->client->fetchData('pet/', [], 'pets', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('pet/', [], 'pets', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -34,7 +35,7 @@ class Pet
      */
     public function getPetAbility($abilityId)
     {
-        return $this->client->fetchData('pet/ability/' . intval($abilityId), [], '', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('pet/ability/' . intval($abilityId), [], '', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -45,7 +46,7 @@ class Pet
      */
     public function getPetSpecies($speciesId)
     {
-        return $this->client->fetchData('pet/species/' . intval($speciesId), [], '', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('pet/species/' . intval($speciesId), [], '', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -63,6 +64,6 @@ class Pet
             'level' => intval($level),
             'breedId' => intval($breedId),
             'qualityId' => intval($qualityId)
-        ], '', $this->client->getSeconds('5m'));
+        ], '', $this->client->getSeconds(Cache::getLifetimeShort()));
     }
 }

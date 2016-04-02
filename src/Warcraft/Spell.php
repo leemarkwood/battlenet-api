@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Spell
@@ -24,6 +25,6 @@ class Spell
      */
     public function getSpell($spellId)
     {
-        return $this->client->fetchData('spell/' . intval($spellId), [], '', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('spell/' . intval($spellId), [], '', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 }

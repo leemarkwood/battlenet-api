@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Data
@@ -23,7 +24,7 @@ class Data
      */
     public function getBattlegroups()
     {
-        return $this->client->fetchData('data/battlegroups/', [], 'battlegroups', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('data/battlegroups/', [], 'battlegroups', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -33,7 +34,7 @@ class Data
      */
     public function getCharacterRaces()
     {
-        return $this->client->fetchData('data/character/races', [], 'races', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('data/character/races', [], 'races', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -43,7 +44,7 @@ class Data
      */
     public function getCharacterClasses()
     {
-        return $this->client->fetchData('data/character/classes', [], 'classes', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('data/character/classes', [], 'classes', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -53,7 +54,8 @@ class Data
      */
     public function getCharacterAchievements()
     {
-        return $this->client->fetchData('data/character/achievements', [], 'achievements', $this->client->getSeconds('24h'));
+        $path = 'data/character/achievements';
+        return $this->client->fetchData($path, [], 'achievements', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -63,7 +65,7 @@ class Data
      */
     public function getGuildRewards()
     {
-        return $this->client->fetchData('data/guild/rewards', [], 'rewards', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('data/guild/rewards', [], 'rewards', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -73,7 +75,7 @@ class Data
      */
     public function getGuildPerks()
     {
-        return $this->client->fetchData('data/guild/perks', [], 'perks', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('data/guild/perks', [], 'perks', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -83,7 +85,8 @@ class Data
      */
     public function getGuildAchievements()
     {
-        return $this->client->fetchData('data/guild/achievements', [], 'achievements', $this->client->getSeconds('24h'));
+        $path = 'data/guild/achievements';
+        return $this->client->fetchData($path, [], 'achievements', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -93,7 +96,7 @@ class Data
      */
     public function getItemClasses()
     {
-        return $this->client->fetchData('data/item/classes', [], 'classes', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('data/item/classes', [], 'classes', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -103,7 +106,7 @@ class Data
      */
     public function getTalents()
     {
-        return $this->client->fetchData('data/talents', [], '', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('data/talents', [], '', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 
     /**
@@ -113,6 +116,6 @@ class Data
      */
     public function getPetTypes()
     {
-        return $this->client->fetchData('data/pet/types', [], 'petTypes', $this->client->getSeconds('24h'));
+        return $this->client->fetchData('data/pet/types', [], 'petTypes', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 }

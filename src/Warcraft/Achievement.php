@@ -2,6 +2,7 @@
 
 namespace BattleNet\Warcraft;
 
+use BattleNet\Cache;
 use BattleNet\Client;
 
 class Achievement
@@ -24,6 +25,7 @@ class Achievement
      */
     public function getAchievement($achievementId)
     {
-        return $this->client->fetchData('achievement/' . intval($achievementId), [], '', $this->client->getSeconds('24h'));
+        $path = 'achievement/' . intval($achievementId);
+        return $this->client->fetchData($path, [], '', $this->client->getSeconds(Cache::getLifetimeLong()));
     }
 }
