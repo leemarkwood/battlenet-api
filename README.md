@@ -65,7 +65,6 @@ Notice that you need to specify "wow", "sc2" and "d3" to clear cache for specifi
 ## TODO
  - Add media-links for various thumbnails, icons etc.
  - Add support for changing cache-times.
- - Add missing support for Diablo.
  - Add support for Auth.
  - Add package to packagist.org
 
@@ -74,3 +73,4 @@ Notice that you need to specify "wow", "sc2" and "d3" to clear cache for specifi
  - 2016-04-02 1.0.0 Initial development.
  - 2016-04-02 1.1.0 Added support for StarCraft.
  - 2016-04-02 1.1.1 Added getMatches() for StarCraft.
+ - 2016-04-02 1.2.0 Added support for Diablo.

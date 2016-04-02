@@ -17,6 +17,58 @@ class Data
     }
 
     /**
+     * Get item.
+     *
+     * @param string $itemId
+     * @return array|mixed
+     */
+    public function getItem($itemId)
+    {
+        return $this->client->fetchData('data/item/' . $itemId, [], '', $this->client->getSeconds('24h'));
+    }
+
+    /**
+     * Get follower.
+     *
+     * @param string $follower
+     * @return array
+     */
+    public function getFollower($follower)
+    {
+        return $this->client->fetchData('data/follower/' . $follower, [], '', $this->client->getSeconds('24h'));
+    }
+
+    /**
+     * Get follower templar.
+     *
+     * @return array
+     */
+    public function getFollowerTemplar()
+    {
+        return $this->getFollower('templar');
+    }
+
+    /**
+     * Get follower enchantress.
+     *
+     * @return array
+     */
+    public function getFollowerEnchantress()
+    {
+        return $this->getFollower('enchantress');
+    }
+
+    /**
+     * Get follower scoundrel.
+     *
+     * @return array
+     */
+    public function getFollowerScoundrel()
+    {
+        return $this->getFollower('scoundrel');
+    }
+
+    /**
      * Get artisan.
      *
      * @param string $artisan
