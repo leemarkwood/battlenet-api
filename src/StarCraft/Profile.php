@@ -38,6 +38,16 @@ class Profile
     }
 
     /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->getData(__FUNCTION__, 0);
+    }
+
+    /**
      * Get display name.
      *
      * @return string
@@ -205,7 +215,8 @@ class Profile
      *
      * @return array
      */
-    public function getMatches() {
+    public function getMatches()
+    {
         $path = 'profile/' . intval($this->profileId) . '/' . intval($this->region) . '/' . $this->name . '/matches';
         return $this->client->fetchData($path, [], 'matches', $this->client->getSeconds($this->seconds));
     }

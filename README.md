@@ -4,9 +4,7 @@ php api for Battle.net game APIs ( https://dev.battle.net/ )
 
 
 ## Installation
-~~Add ```"mrcorex/battlenet-api": "^1"``` to your composer.json file and run "composer update".~~
-
-(not added to packagist.org yet.)
+Add ```"mrcorex/battlenet-api": "^1"``` to your composer.json file and run "composer update".
 
 
 ## Setting configuration.
@@ -65,7 +63,6 @@ Notice that you need to specify "wow", "sc2" and "d3" to clear cache for specifi
 ## TODO
  - Add media-links for various thumbnails, icons etc.
  - Add support for Auth.
- - Add package to packagist.org
 
 
 ## ChangeLog
