@@ -71,3 +71,5 @@ Notice that you need to specify "wow", "sc2" and "d3" to clear cache for specifi
  - 2016-04-02 1.1.1 Added getMatches() for StarCraft.
  - 2016-04-02 1.2.0 Added support for Diablo.
  - 2016-04-02 1.3.0 Added support for changing cache-lifetime (short/long).
+ - 2016-04-02 1.4.0 Refactored cache handler for general usage.
+

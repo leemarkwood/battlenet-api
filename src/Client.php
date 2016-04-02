@@ -14,6 +14,8 @@ class Client
 
     /**
      * BattleNetClient constructor.
+     *
+     * @param string $prefix
      */
     public function __construct($prefix)
     {
@@ -44,25 +46,10 @@ class Client
         // Set default values.
         $this->code = 200;
         $this->message = '';
-        $data = [];
-
         $fetch = true;
-        $cacheFilename = $this->getCacheFilename($path, $params);
-        if (Config::getCachePath() != '' && !$forceFetch) {
-
-            // Check lifetime on cache and load/unlink.
-            if ($cacheLifetime > 0 && file_exists($cacheFilename)) {
-                $modifiedTime = filemtime($cacheFilename);
-                if ($modifiedTime > (time() - $cacheLifetime)) {
-                    $fetch = false;
-                    $json = file_get_contents($cacheFilename);
-                    $data = json_decode($json, true);
-                } else {
-                    if (file_exists($cacheFilename)) {
-                        unlink($cacheFilename);
-                    }
-                }
-            }
+        $data = Cache::load($this->prefix, $path, $params, $cacheLifetime);
+        if (!$forceFetch && count($data) > 0) {
+            $fetch = false;
         }
         if ($fetch) {
 
@@ -80,8 +67,8 @@ class Client
             }
 
             // Save cache.
-            if ($cacheLifetime > 0 && Config::getCachePath() != '') {
-                file_put_contents($cacheFilename, json_encode($data));
+            if ($cacheLifetime > 0) {
+                Cache::save($this->prefix, $path, $params, $data);
             }
         }
 
@@ -184,32 +171,5 @@ class Client
             }
         }
         return $url;
-    }
-
-    /**
-     * Get cache-filename.
-     *
-     * @param string $path
-     * @param array $params
-     * @param bool|true $includePath
-     * @return string
-     */
-    private function getCacheFilename($path, $params, $includePath = true)
-    {
-        $code = str_replace('/', '.', $path);
-        if (substr($code, 0, 1) == '.') {
-            $code = substr($code, 1);
-        }
-        if (substr($code, -1) == '.') {
-            $code = substr($code, 0, -1);
-        }
-        if (count($params) > 0) {
-            $code .= '.' . md5(serialize($params));
-        }
-        $filename = $this->prefix . '.' . $code . '.json';
-        if ($includePath) {
-            $filename = Config::getCachePath() . '/' . $filename;
-        }
-        return $filename;
     }
 }
