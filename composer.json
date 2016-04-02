@@ -1,5 +1,6 @@
 {
 	"name": "mrcorex/battlenet-api",
+	"license": "MIT",
 	"description": "php api for Battle.net game APIs ( https://dev.battle.net/ ).",
 	"keywords": [
 		"wow",
