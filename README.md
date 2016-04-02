@@ -73,3 +73,4 @@ Notice that you need to specify "wow", "sc2" and "d3" to clear cache for specifi
 ## ChangeLog
  - 2016-04-02 1.0.0 Initial development.
  - 2016-04-02 1.1.0 Added support for StarCraft.
+ - 2016-04-02 1.1.1 Added getMatches() for StarCraft.

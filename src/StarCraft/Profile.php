@@ -200,6 +200,16 @@ class Profile
     }
 
     /**
+     * Get history matches.
+     *
+     * @return array
+     */
+    public function getMatches() {
+        $path = 'profile/' . intval($this->profileId) . '/' . intval($this->region) . '/' . $this->name . '/matches';
+        return $this->client->fetchData($path, [], 'matches', $this->client->getSeconds($this->seconds));
+    }
+
+    /**
      * Get data from fetch'ed data.
      *
      * @param string $name
