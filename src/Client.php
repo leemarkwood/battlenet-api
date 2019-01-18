@@ -155,7 +155,7 @@ class Client
      */
     private function buildUrl($path, $params)
     {
-        $url = 'https://' . $this->server . '.api.blizzard.com/' . $this->prefix;
+        $url = 'https://' . $this->server . '.api.blizzard.com/data/' . $this->prefix;
         $url .= '/' . $path;
         $url .= '?locale=' . $this->locale;
         $url .= '&apikey=' . $this->apiKey;
