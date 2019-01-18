@@ -155,7 +155,7 @@ class Client
      */
     private function buildUrl($path, $params)
     {
-        $url = 'https://' . $this->server . '.api.battle.net/' . $this->prefix;
+        $url = 'https://' . $this->server . '.api.blizzard.com/' . $this->prefix;
         $url .= '/' . $path;
         $url .= '?locale=' . $this->locale;
         $url .= '&apikey=' . $this->apiKey;
@@ -166,7 +166,7 @@ class Client
                 }
                 if ($value != '') {
                     $url .= '&' . $name . '=';
-                    $url .= $value;
+                $url .= $value;
                 }
             }
         }
